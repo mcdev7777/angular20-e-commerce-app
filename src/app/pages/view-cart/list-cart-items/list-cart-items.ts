@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { ViewPanel } from '../../../directives/view-panel';
 
 @Component({
   selector: 'app-list-cart-items',
-  imports: [],
-  template: ` <div class="border border-gray-200 rounded-xl p-6 bg-white"></div> `,
+  imports: [ViewPanel],
+  template: ` <div appViewPanel></div> `,
   styles: ``,
 })
 export class ListCartItems {}
