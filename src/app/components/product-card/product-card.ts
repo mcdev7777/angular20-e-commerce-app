@@ -10,7 +10,7 @@ import { RouterLink } from "@angular/router";
   imports: [MatButton, MatIcon, RouterLink],
   template: `
     <div class="relative bg-white cursor-pointer shadow-lg rounded-xl overflow-hidden flex flex-col h-full transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-xl">
-      <img [src]="product().imageUrl" class="w-full h-[300px] object-cover rounded-t-xl" [routerLink]="['/product', product().id]" />
+      <img [src]="product().imageUrl" class="w-full h-[300px] object-cover rounded-t-xl" [routerLink]="['/product', product().id]" [style.view-transition-name]="'product-image-' + product().id" />
       <ng-content/>
       <div class="p-5 flex flex-col flex-1">
         <h3 class="text-lg font-semibold text-gray-900 mb-2 leading-tight">
