@@ -252,12 +252,13 @@ export const EcommerceStore = signalStore(
         cartItems: [],
     } as EcommerceState),
 
-    withComputed(({ category, products, wishlistItems }) => ({
+    withComputed(({ category, products, wishlistItems, cartItems }) => ({
         filteredProducts: computed(() => {
             if (category() === 'all') return products();
             return products().filter((p) => p.category === category().toLowerCase());
         }),
         wishlistCount: computed(() => wishlistItems().length),
+        cartCount: computed(() => cartItems().reduce((acc, item) => acc + item.quantity, 0)),
     })),
 
     withMethods((store, toaster = inject(Toaster)) => ({
@@ -300,6 +301,8 @@ export const EcommerceStore = signalStore(
                 })
             });
             patchState(store, { cartItems: updatedCartItems })
+            console.log("efrgt", existingItemIndex);
+            
             toaster.success(existingItemIndex ? "Product added again" : "Product added to the cart")
         },
     }))
