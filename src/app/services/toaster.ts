@@ -8,6 +8,10 @@ export class Toaster {
   toaster = inject(HotToastService);
 
   success(message: string) {
+    this.toaster.success(message);
+  }
+
+  error(message: string) {
     this.toaster.error(message);
   }
 }
