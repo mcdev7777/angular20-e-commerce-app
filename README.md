@@ -123,31 +123,47 @@ It includes essential e-commerce features like product catalog, cart management,
 angular20-ecommerce-frontend/
 ├── src/
 │   ├── app/
+│   │   ├── components/
+|   |   |   ├── back-button/
+|   |   |   |   ├── back-button.ts
+|   |   |   ├── product-card/
+|   |   |   |   ├── product-card.ts
+|   |   |   ├── toggle-wishlist-button/
+|   |   |   |   ├── toggle-wishlist-button.ts
 │   │   ├── layout/
 |   |   |   ├── header/
 |   |   |   |   ├── header.ts
 |   |   |   ├── header-action/
 |   |   |   |   ├── header-action.ts
+│   │   ├── models/
+|   |   |   ├── product.ts
 │   │   ├── pages/
 |   |   |   ├── my-wishlist/
+|   |   |   |   ├── empty-wishlist/
+|   |   |   |   |   ├── empty-wishlist.ts
 |   |   |   |   ├── my-wishlist.ts
 |   |   |   ├── products-grid/
 |   |   |   |   ├── products-grid.ts
+│   │   ├── services/
+|   |   |   ├── toaster.ts
 │   │   ├── app.config.ts
-│   │   └── app.routes.ts
-│   │   └── app.ts
+│   │   ├── app.routes.ts
+│   │   ├── app.ts
+│   │   └── ecommerce-store.ts
 │   ├── index.html
 │   ├── main.ts
 │   ├── styles.scss
 ├── .editorconfig
+├── .env.local
 ├── .gitignore
 ├── .postcssrc.json
 ├── angular.json
+├── package-lock.json
 ├── package.json
+├── README.md
 ├── tsconfig.app.json
 ├── tsconfig.json
-├── tsconfig.spec.json
-└── README.md
+└── tsconfig.spec.json
 ```
 
 <br/>
