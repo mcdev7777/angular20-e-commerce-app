@@ -61,7 +61,8 @@ import { TitleCasePipe } from '@angular/common';
 export default class ProductsGrid {
   category = input<string>('all');
 
-  products = signal<Product[]>([
+  products = signal<Product[]>(
+    [
     {
       id: '1',
       name: 'Wireless Noise-Cancelling Headphones',
