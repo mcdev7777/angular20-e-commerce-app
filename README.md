@@ -11,7 +11,7 @@ It includes essential e-commerce features like product catalog, cart management,
 <br/>
 
 ### Project Deployment
-👉 [Live Demo](https://your-demo-link.vercel.app/)  
+👉 [Live Demo](https://angular20-e-commerce-app.vercel.app/products)  
 
 <br/>
 
