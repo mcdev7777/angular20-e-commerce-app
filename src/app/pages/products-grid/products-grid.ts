@@ -1,19 +1,50 @@
 import { Component, computed, input, signal } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductCard } from '../../components/product-card/product-card';
+import { MatSidenavContainer, MatSidenavContent, MatSidenav } from '@angular/material/sidenav';
+import { MatNavList, MatListItem, MatListItemTitle } from '@angular/material/list';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-products-grid',
-  imports: [ProductCard],
+  imports: [
+    ProductCard,
+    MatSidenavContainer,
+    MatSidenavContent,
+    MatSidenav,
+    MatNavList,
+    MatListItem,
+    MatListItemTitle,
+    RouterModule,
+  ],
   template: `
-    <div class="bg-gray-100 p-6">
-      <h1 class="text-2xl font-bold text-gray-900">{{ category() }}</h1>
-    </div>
-    <div class="responsive-grid">
-      @for (product of filteredProducts(); track product.id) {
-        <app-product-card [product]="product" />
-      }
-    </div>
+    <mat-sidenav-container>
+      <mat-sidenav mode="side" opened="true" class="w-64 bg-white shadow-md p-6">
+        <div class="p-6">
+          <h2 class="text-lg text-gray-900">Categories</h2>
+          <mat-nav-list>
+            @for (category of categories(); track category) {
+              <mat-list-item class="my-2" [routerLink]="['/products', category]">
+                <span matListItemTitle>
+                  {{ category }}
+                </span>
+              </mat-list-item>
+            }
+          </mat-nav-list>
+        </div>
+      </mat-sidenav>
+      <mat-sidenav-content class="bg-gray-100 p-6 h-full">
+        <div class="bg-gray-100 p-6">
+          <h1 class="text-2xl font-bold text-gray-900">{{ category() }}</h1>
+        </div>
+        <div class="responsive-grid">
+          @for (product of filteredProducts(); track product.id) {
+            <app-product-card [product]="product" />
+          }
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
   `,
   styles: ``,
 })
@@ -249,5 +280,6 @@ export default class ProductsGrid {
 
     return this.products().filter((p) => p.category === this.category().toLowerCase());
   });
-  
+
+  categories = signal<string[]>(['all', 'electronic', 'clothing', 'accessories', 'home']);
 }
