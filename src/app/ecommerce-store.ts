@@ -6,7 +6,7 @@ import { Toaster } from './services/toaster';
 import { CartItem } from './models/cart';
 import { MatDialog } from '@angular/material/dialog';
 import { SignInDialog } from './components/sign-in-dialog/sign-in-dialog';
-import { SignInParams, User } from './models/user';
+import { SignInParams, SignUpParams, User } from './models/user';
 import { Router } from '@angular/router';
 
 export type EcommerceState = {
@@ -361,6 +361,23 @@ export const EcommerceStore = signalStore(
         },
 
         signIn: ({ email, password, checkout, dialogId}: SignInParams) => {
+            patchState(store, {
+                user: {
+                    id: '1',
+                    email,
+                    name: 'John Doe',
+                    imageUrl: 'https://randomuser.me/api/portraits/men/1.jpg',
+                },
+            });
+
+            matDialog.getDialogById(dialogId)?.close();
+            
+            if(checkout) {
+                router.navigate(['/checkout']);
+            }
+        },
+
+        signUp: ({ email, password, name, checkout, dialogId}: SignUpParams) => {
             patchState(store, {
                 user: {
                     id: '1',
