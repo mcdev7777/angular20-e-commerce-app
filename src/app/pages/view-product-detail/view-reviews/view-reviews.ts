@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { Product } from '../../../models/product';
 import { ViewPanel } from '../../../directives/view-panel';
 import { RatingSummary } from '../rating-summary/rating-summary';
@@ -15,7 +15,7 @@ import { ViewReviewItem } from '../view-review-item/view-review-item';
       </div>
       <app-rating-summary [product]="product()" />
       <div class="flex flex-col gap-6">
-        @for (review of product().reviews; track review.id) {
+        @for (review of sortedReviews(); track review.id) {
           <app-view-review-item [review]="review" />
         }
       </div>
@@ -25,4 +25,10 @@ import { ViewReviewItem } from '../view-review-item/view-review-item';
 })
 export class ViewReviews {
   product = input.required<Product>();
+
+  sortedReviews = computed(() => {
+    return [...this.product().reviews].sort(
+      (a, b) => b.reviewDate.getTime() - a.reviewDate.getTime(),
+    );
+  });
 }
