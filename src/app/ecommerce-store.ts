@@ -10,24 +10,51 @@ import { SignInParams, SignUpParams, User } from './models/user';
 import { Router } from '@angular/router';
 import { Order } from './models/order';
 import { withStorageSync } from '@angular-architects/ngrx-toolkit'
+import { UserReview } from './models/user-review';
 
-export type EcommerceState = {
-    products: Product[];
-    category: string;
-    wishlistItems: Product[];
-    cartItems: CartItem[];
-    user: User | undefined;
-    loading: boolean;
-    selectProductId: string | undefined;
+const randomFrom = <T>(arr: T[]) =>
+  arr[Math.floor(Math.random() * arr.length)];
+
+const userNames = [
+  'Rahul', 'Amit', 'Neha', 'Pooja', 'Vikas',
+  'Anjali', 'Sandeep', 'Rohit', 'Kriti', 'Arjun',
+];
+
+const reviewTitles = [
+  'Excellent product',
+  'Worth the money',
+  'Highly recommended',
+  'Good quality',
+  'Satisfied purchase',
+];
+
+const reviewComments = [
+  'Product quality is really good.',
+  'Value for money, totally satisfied.',
+  'Would definitely recommend to others.',
+  'Packaging and delivery were good.',
+  'Using it daily and performance is great.',
+];
+
+const generateReviews = (
+  productId: string,
+  count: number
+): UserReview[] => {
+  return Array.from({ length: count }, (_, i) => ({
+    id: `${productId}-review-${i + 1}`,
+    productId,
+    userName: randomFrom(userNames),
+    userImageUrl: `https://randomuser.me/api/portraits/lego/${i % 10}.jpg`,
+    rating: Math.floor(Math.random() * 2) + 4,
+    title: randomFrom(reviewTitles),
+    comment: randomFrom(reviewComments),
+    reviewDate: new Date(
+      Date.now() - Math.floor(Math.random() * 30) * 86400000
+    ),
+  }));
 };
 
-export const EcommerceStore = signalStore(
-    {
-        providedIn: 'root',
-    },
-
-    withState({
-        products: [
+const rawProducts: Omit<Product, 'reviews'>[] = [
             {
                 id: '1',
                 name: 'Wireless Noise-Cancelling Headphones',
@@ -255,14 +282,36 @@ export const EcommerceStore = signalStore(
                 inStock: true,
                 category: 'electronic',
             },
-        ],
-        category: 'all',
-        wishlistItems: [],
-        cartItems: [],
-        user: undefined,
-        loading: false,
-        selectProductId: undefined,
-    } as EcommerceState),
+        ];
+
+
+export type EcommerceState = {
+    products: Product[];
+    category: string;
+    wishlistItems: Product[];
+    cartItems: CartItem[];
+    user: User | undefined;
+    loading: boolean;
+    selectProductId: string | undefined;
+};
+
+export const EcommerceStore = signalStore(
+    {
+        providedIn: 'root',
+    },
+
+    withState({
+  products: rawProducts.map((product) => ({
+    ...product,
+    reviews: generateReviews(product.id, product.reviewCount),
+  })),
+  category: 'all',
+  wishlistItems: [],
+  cartItems: [],
+  user: undefined,
+  loading: false,
+  selectProductId: undefined,
+} as EcommerceState),
 
     withStorageSync({ key: 'modern-store', select: ({ wishlistItems, cartItems, user }) => ({ wishlistItems, cartItems, user}) }),
 
