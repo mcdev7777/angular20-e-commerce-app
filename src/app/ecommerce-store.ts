@@ -15,6 +15,7 @@ export type EcommerceState = {
     wishlistItems: Product[];
     cartItems: CartItem[];
     user: User | undefined;
+    loading: boolean;
 };
 
 export const EcommerceStore = signalStore(
@@ -256,6 +257,7 @@ export const EcommerceStore = signalStore(
         wishlistItems: [],
         cartItems: [],
         user: undefined,
+        loading: false,
     } as EcommerceState),
 
     withComputed(({ category, products, wishlistItems, cartItems }) => ({
