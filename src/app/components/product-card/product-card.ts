@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Product } from '../../models/product';
 import { MatAnchor } from "@angular/material/button";
 import { MatIcon } from "@angular/material/icon";
@@ -22,7 +22,7 @@ import { MatIcon } from "@angular/material/icon";
         </div>
         <div class="flex items-center justify-between mt-auto">
           <span class="text-2xl font-bold text-gray-900">\${{product().price}}</span>
-          <button matButton="filled" class="flex items-center gap-2">
+          <button matButton="filled" class="flex items-center gap-2" (click)="addToCartClicked.emit(product())">
             <mat-icon>shopping_cart</mat-icon>
             Add to Cart
           </button>
@@ -34,4 +34,6 @@ import { MatIcon } from "@angular/material/icon";
 })
 export class ProductCard {
   product = input.required<Product>();
+
+  addToCartClicked = output<Product>();
 }
