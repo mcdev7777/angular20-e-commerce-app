@@ -366,6 +366,10 @@ export const EcommerceStore = signalStore(
             router.navigate(['/checkout']);
         },
 
+        placeOrder: () => {
+            patchState(store, { loading: true});
+        },
+
         signIn: ({ email, password, checkout, dialogId}: SignInParams) => {
             patchState(store, {
                 user: {
