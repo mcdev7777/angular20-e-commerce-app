@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
   template: `
     <div class="flex justify-center items-center min-h-screen py-6">
       <div
-        class="flex flex-col justify-center items-center text-center bg-white rounded-xl shadow p-8 gap-6"
+        class="flex flex-col justify-center items-center text-center bg-white rounded-xl shadow p-8 gap-6 -z-1"
       >
         <mat-icon class="!text-green-500 !h-[56px] !w-[56px] !text-[56px]">check_circle</mat-icon>
         <h2 class="font-semibold text-green-600 text-2xl font-bold">Order Successful!</h2>

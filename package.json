@@ -22,7 +22,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-architects/ngrx-toolkit": "^21.0.1",
+    "@angular-architects/ngrx-toolkit": "^20.0.0",
     "@angular/cdk": "^20.2.14",
     "@angular/common": "^20.3.0",
     "@angular/compiler": "^20.3.0",

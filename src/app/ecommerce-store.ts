@@ -262,7 +262,7 @@ export const EcommerceStore = signalStore(
         loading: false,
     } as EcommerceState),
 
-    withStorageSync({ key: 'modern-store', select: ({ wishlistItems, cartItems }) => ({ wishlistItems, cartItems}) }),
+    withStorageSync({ key: 'modern-store', select: ({ wishlistItems, cartItems, user }) => ({ wishlistItems, cartItems, user}) }),
 
     withComputed(({ category, products, wishlistItems, cartItems }) => ({
         filteredProducts: computed(() => {
@@ -313,7 +313,7 @@ export const EcommerceStore = signalStore(
                 })
             });
             patchState(store, { cartItems: updatedCartItems })
-            console.log("efrgt", existingItemIndex);
+            // console.log("efrgt", existingItemIndex);
             
             toaster.success(existingItemIndex ? "Product added again" : "Product added to the cart")
         },
