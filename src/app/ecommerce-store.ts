@@ -18,6 +18,7 @@ export type EcommerceState = {
     cartItems: CartItem[];
     user: User | undefined;
     loading: boolean;
+    selectProductId: string | undefined;
 };
 
 export const EcommerceStore = signalStore(
@@ -70,7 +71,7 @@ export const EcommerceStore = signalStore(
                 imageUrl: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f',
                 rating: 4.4,
                 reviewCount: 54,
-                inStock: true,
+                inStock: false,
                 category: 'clothing',
             },
             {
@@ -260,23 +261,30 @@ export const EcommerceStore = signalStore(
         cartItems: [],
         user: undefined,
         loading: false,
+        selectProductId: undefined,
     } as EcommerceState),
 
     withStorageSync({ key: 'modern-store', select: ({ wishlistItems, cartItems, user }) => ({ wishlistItems, cartItems, user}) }),
 
-    withComputed(({ category, products, wishlistItems, cartItems }) => ({
+    withComputed(({ category, products, wishlistItems, cartItems, selectProductId }) => ({
         filteredProducts: computed(() => {
             if (category() === 'all') return products();
             return products().filter((p) => p.category === category().toLowerCase());
         }),
         wishlistCount: computed(() => wishlistItems().length),
         cartCount: computed(() => cartItems().reduce((acc, item) => acc + item.quantity, 0)),
+        selectProduct: computed(() => products().find((p) => p.id === selectProductId())),
     })),
 
     withMethods((store, toaster = inject(Toaster), matDialog = inject(MatDialog), router=inject(Router)) => ({
         setCategory: signalMethod<string>((category: string) => {
             patchState(store, { category });
         }),
+
+        setProductId: signalMethod<string>((productId: string) => {
+            patchState(store, { selectProductId: productId });
+        }),
+
         addToWishlist: (product: Product) => {
             const updatedWishlistItems = produce(store.wishlistItems(), (draft) => {
                 if (!draft.find(p => p.id === product.id)) {

@@ -1,15 +1,16 @@
-import { Component, computed, inject, input, output } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Product } from '../../models/product';
 import { MatButton } from "@angular/material/button";
 import { MatIcon } from "@angular/material/icon";
 import { EcommerceStore } from '../../ecommerce-store';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-product-card',
-  imports: [MatButton, MatIcon],
+  imports: [MatButton, MatIcon, RouterLink],
   template: `
-    <div class="relative bg-white cursor-pointer shadow-lg rounded-xl overflow-hidden flex flex-col h-full">
-      <img [src]="product().imageUrl" class="w-full h-[300px] object-cover rounded-t-xl" />
+    <div class="relative bg-white cursor-pointer shadow-lg rounded-xl overflow-hidden flex flex-col h-full transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-xl">
+      <img [src]="product().imageUrl" class="w-full h-[300px] object-cover rounded-t-xl" [routerLink]="['/product', product().id]" />
       <ng-content/>
       <div class="p-5 flex flex-col flex-1">
         <h3 class="text-lg font-semibold text-gray-900 mb-2 leading-tight">
@@ -24,9 +25,9 @@ import { EcommerceStore } from '../../ecommerce-store';
         </div>
         <div class="flex items-center justify-between mt-auto">
           <span class="text-2xl font-bold text-gray-900">\${{product().price}}</span>
-          <button matButton="filled" class="flex items-center gap-2" (click)="store.addToCart(product())">
+          <button matButton="filled" class="flex items-center gap-2" (click)="store.addToCart(product())" [disabled]="!product().inStock">
             <mat-icon>shopping_cart</mat-icon>
-            Add to Cart
+            {{ product().inStock ? 'Add to Cart' : 'Out of Stock' }}
           </button>
         </div>
       </div>
