@@ -3,9 +3,9 @@ export type Product = {
     name: string;
     description: string;
     price: number;
-    imaageUrl: string;
+    imageUrl: string;
     rating: number;
     reviewCount: number;
-    inSrock: boolean;
+    inStock: boolean;
     category: string;
 };
