@@ -1,7 +1,8 @@
-import { computed } from '@angular/core';
+import { computed, inject } from '@angular/core';
 import { Product } from './models/product';
 import { patchState, signalMethod, signalStore, withComputed, withMethods, withState } from '@ngrx/signals';
 import { produce } from "immer";
+import { Toaster } from './services/toaster';
 
 export type EcommerceState = {
     products: Product[];
@@ -255,7 +256,7 @@ export const EcommerceStore = signalStore(
         }),
     })),
 
-    withMethods((store) => ({
+    withMethods((store, toaster = inject(Toaster)) => ({
         setCategory: signalMethod<string>((category: string) => {
             patchState(store, { category });
         }),
@@ -267,6 +268,7 @@ export const EcommerceStore = signalStore(
             });
 
             patchState(store, { wishlistItems: updatedWishlistItems });
+            toaster.success("Product added to wishlist")
         }
     }))
 );  
