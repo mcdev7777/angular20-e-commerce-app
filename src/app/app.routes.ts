@@ -15,3 +15,4 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/my-wishlist/my-wishlist')
     }
 ];
+
