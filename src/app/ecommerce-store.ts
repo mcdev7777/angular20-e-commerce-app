@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SignInDialog } from './components/sign-in-dialog/sign-in-dialog';
 import { SignInParams, SignUpParams, User } from './models/user';
 import { Router } from '@angular/router';
+import { Order } from './models/order';
 
 export type EcommerceState = {
     products: Product[];
@@ -366,8 +367,31 @@ export const EcommerceStore = signalStore(
             router.navigate(['/checkout']);
         },
 
-        placeOrder: () => {
-            patchState(store, { loading: true});
+        placeOrder: async () => {
+            patchState(store, {loading: true});
+
+            const user = store.user();
+
+            if(!user) {
+                toaster.error('Please login before placing order');
+                patchState(store, { loading: false });
+                return;
+            }
+
+            const order: Order = {
+                id: crypto.randomUUID(),
+                userId: user.id,
+                total: Math.round(store
+                  .cartItems()
+                  .reduce((acc, item) => acc + item.quantity * item.product.price, 0)),
+                items: store.cartItems(),
+                paymentStatus: 'success',
+            };
+
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+
+            patchState(store, { loading: false, cartItems: [] });
+            router.navigate(['order-success']);
         },
 
         signIn: ({ email, password, checkout, dialogId}: SignInParams) => {
