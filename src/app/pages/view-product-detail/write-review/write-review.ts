@@ -7,6 +7,7 @@ import { ViewPanel } from '../../../directives/view-panel';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { MatButton } from '@angular/material/button';
 import { EcommerceStore } from '../../../ecommerce-store';
+import { AddReviewParams } from '../../../models/user-review';
 
 @Component({
   selector: 'app-write-review',
@@ -86,5 +87,13 @@ export class WriteReview {
     rating: [5, Validators.required],
   });
 
-  saveReview() {}
+  saveReview() {
+    if (!this.reviewForm.valid) {
+      this.reviewForm.markAllAsTouched();
+      return;
+    }
+
+    const { title, comment, rating } = this.reviewForm.value;
+    this.store.addReview({ title, comment, rating } as AddReviewParams);
+  }
 }
