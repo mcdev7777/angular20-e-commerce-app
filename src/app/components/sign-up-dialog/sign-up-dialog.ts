@@ -102,7 +102,7 @@ export class SignUpDialog {
       email,
       password,
       dialogId: this.dialogRef.id,
-      checkout: this.data.checkout,
+      checkout: this.data?.checkout,
     } as SignUpParams);
   }
 
@@ -111,7 +111,7 @@ export class SignUpDialog {
     this.matDialog.open(SignInDialog, {
       disableClose: true,
       data: {
-        checkout: this.data.checkout,
+        checkout: this.data?.checkout,
       },
     });
   }

@@ -95,7 +95,7 @@ export class SignInDialog {
     this.store.signIn({
       email,
       password,
-      checkout: this.data.checkout,
+      checkout: this.data?.checkout,
       dialogId: this.dialogRef.id,
     } as SignInParams);
   }
@@ -105,7 +105,7 @@ export class SignInDialog {
     this.matDialog.open(SignUpDialog, {
       disableClose: true,
       data: {
-        checkout: this.data.checkout,
+        checkout: this.data?.checkout,
       },
     });
   }
