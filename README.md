@@ -11,7 +11,8 @@ It includes essential e-commerce features like product catalog, cart management,
 <br/>
 
 ### Project Deployment
-👉 [Live Demo](https://angular20-e-commerce-app.vercel.app/products)  
+
+👉 [Live Demo](https://angular20-e-commerce-app.vercel.app/products)
 
 <br/>
 
@@ -55,6 +56,7 @@ It includes essential e-commerce features like product catalog, cart management,
 # ✨ Features
 
 ## 🎯 Core Functionality
+
 - **Product Catalog**: Browse products with category filtering
 - **Search**: Real-time product search
 - **Product Details**: Ratings, reviews, and descriptions
@@ -63,6 +65,7 @@ It includes essential e-commerce features like product catalog, cart management,
 - **Checkout Flow**: Multi-step checkout with shipping info and order confirmation
 
 ## 🚀 Advanced Features
+
 - **Angular Signals**: Reactive state management
 - **Standalone Components**: Clean modular architecture
 - **Responsive Design**: TailwindCSS + Angular Material
@@ -74,12 +77,15 @@ It includes essential e-commerce features like product catalog, cart management,
 # 📱 Screenshots
 
 ## Product Catalogue
+
 ![Catalog Screenshot](https://github.com/user-attachments/assets/catalog.png)
 
 ## Cart & Wishlist
+
 ![Cart Screenshot](https://github.com/user-attachments/assets/cart.png)
 
 ## Checkout Flow
+
 ![Checkout Screenshot](https://github.com/user-attachments/assets/checkout.png)
 
 <br/>
@@ -87,11 +93,13 @@ It includes essential e-commerce features like product catalog, cart management,
 # 🛠️ Setup Instructions
 
 ## Prerequisites
+
 - Node.js (v20 or higher recommended)
 - npm package manager
 - Modern web browser
 
 ## Installation
+
 1. Clone the repository:
    ```sh
    git clone https://github.com/your-username/angular20-e-commerce-app.git
@@ -111,9 +119,10 @@ It includes essential e-commerce features like product catalog, cart management,
 5. Open your browser at `http://localhost:5173`
 
 ## Available Scripts
-- `ng serve` - Runs the app in development mode  
-- `ng build` - Builds the app for production  
-- `ng test` - Launches the test runner  
+
+- `ng serve` - Runs the app in development mode
+- `ng build` - Builds the app for production
+- `ng test` - Launches the test runner
 
 <br/>
 
@@ -169,30 +178,35 @@ angular20-ecommerce-frontend/
 <br/>
 
 # 🎨 Key Features Breakdown
-- **Angular Signals**: Clean reactivity without RxJS boilerplate  
-- **NGRX Signal Store**: Predictable state management  
-- **TailwindCSS**: Utility-first responsive styling  
-- **Angular Material**: Prebuilt UI components  
-- **Standalone Components**: No legacy NgModules  
+
+- **Angular Signals**: Clean reactivity without RxJS boilerplate
+- **NGRX Signal Store**: Predictable state management
+- **TailwindCSS**: Utility-first responsive styling
+- **Angular Material**: Prebuilt UI components
+- **Standalone Components**: No legacy NgModules
 
 <br/>
 
 # 🚀 Deployment
+
 Deployed easily on **Vercel** or **Netlify**:
-1. Push code to GitHub  
-2. Connect repository to Vercel  
-3. Deploy with automatic builds  
+
+1. Push code to GitHub
+2. Connect repository to Vercel
+3. Deploy with automatic builds
 
 <br/>
 
 # 🙏 Acknowledgments
-- Angular team for modern framework features  
-- TailwindCSS contributors for utility-first styling  
-- Open-source community for inspiration  
+
+- Angular team for modern framework features
+- TailwindCSS contributors for utility-first styling
+- Open-source community for inspiration
 
 <br/>
 
 ## Show your support
+
 Give a ⭐️ if you like this project!
 
 <h1 align="center">✨ Happy Coding with Angular 20! ✨</h1>

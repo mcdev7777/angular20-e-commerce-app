@@ -8,13 +8,7 @@ import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-checkout',
-  imports: [
-    BackButton,
-    ShippingForm,
-    PaymentForm,
-    SummarizeOrder,
-    MatButton,
-  ],
+  imports: [BackButton, ShippingForm, PaymentForm, SummarizeOrder, MatButton],
   template: `
     <div class="mx-auto max-w-[1200px] py-6">
       <app-back-button class="mb-4" navigateTo="/cart">Back to Cart</app-back-button>

@@ -3,25 +3,25 @@
 // components according to the Material 3 design spec.
 // Learn more about theming and how to use it for your application's
 // custom components at https://material.angular.dev/guide/theming
-@use '@angular/material' as mat;
-@use 'tailwindcss';
-@use '@ngxpert/hot-toast/styles';
+@use "@angular/material" as mat;
+@use "tailwindcss";
+@use "@ngxpert/hot-toast/styles";
 
 html {
   @include mat.theme(
     (
       color: (
         primary: mat.$azure-palette,
-        tertiary: mat.$blue-palette,
+        tertiary: mat.$blue-palette
       ),
       typography: (
-        plain-family: 'Inter',
-        brand-family: 'Inter',
+        plain-family: "Inter",
+        brand-family: "Inter",
         bold-weight: 600,
         medium-weight: 500,
-        regular-weight: 400,
+        regular-weight: 400
       ),
-      density: 0,
+      density: 0
     )
   );
 }
@@ -44,7 +44,7 @@ body {
 
   @include mat.dialog-overrides(
     (
-      container-shape: 6px,
+      container-shape: 6px
     )
   );
 
@@ -60,10 +60,10 @@ body {
 body {
   margin: 0;
   font-family:
-    'Inter',
+    "Inter",
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    "Segoe UI",
     sans-serif;
 }
 
@@ -90,17 +90,17 @@ button[matButton] {
       outlined-container-height: 36px,
       text-container-height: 36px,
       protected-container-height: 36px,
-      tonal-container-height: 36px,
+      tonal-container-height: 36px
     )
   );
 }
 
-button[matButton='outlined'].danger {
+button[matButton="outlined"].danger {
   @include mat.button-overrides(
     (
       outlined-label-text-color: var(--mat-sys-error),
       outlined-outline-color: var(--mat-sys-error),
-      outlined-state-layer-color: var(--mat-sys-error),
+      outlined-state-layer-color: var(--mat-sys-error)
     )
   );
 }
@@ -108,7 +108,7 @@ button[matButton='outlined'].danger {
 button[matIconButton] {
   @include mat.icon-button-overrides(
     (
-      container-shape: 6px,
+      container-shape: 6px
     )
   );
 }
@@ -117,7 +117,7 @@ button[matIconButton].danger {
   @include mat.icon-button-overrides(
     (
       icon-color: var(--mat-sys-error),
-      state-layer-color: var(--mat-sys-error),
+      state-layer-color: var(--mat-sys-error)
     )
   );
 }
@@ -127,7 +127,7 @@ button[matIconButton].small {
     (
       icon-size: 24px,
       touch-target-size: 28px,
-      state-layer-size: 28px,
+      state-layer-size: 28px
     )
   );
 }
@@ -145,7 +145,7 @@ mat-icon.small {
 mat-form-field {
   @include mat.theme(
     (
-      density: -4,
+      density: -4
     )
   );
 
@@ -158,7 +158,7 @@ mat-sidenav {
       container-width: 250px,
       container-shape: 0px,
       container-background-color: white,
-      container-divider-color: var(--mat-sys-outline-variant),
+      container-divider-color: var(--mat-sys-outline-variant)
     )
   );
 
@@ -166,7 +166,7 @@ mat-sidenav {
     (
       active-indicator-color: var(--mat-sys-primary),
       active-indicator-shape: 6px,
-      list-item-one-line-container-height: 40px,
+      list-item-one-line-container-height: 40px
     )
   );
 }
