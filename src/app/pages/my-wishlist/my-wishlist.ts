@@ -31,6 +31,12 @@ import { MatIconButton } from '@angular/material/button';
             </app-product-card>
           }
         </div>
+
+        <div class="mt-8 flex justify-center">
+          <button matButton="outlined" class="danger" (click)="store.clearWishlist()">
+            Clear Wishlist
+          </button>
+        </div>
       } @else {}
     </div>
   `,
